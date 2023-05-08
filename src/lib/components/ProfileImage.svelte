@@ -1,5 +1,6 @@
 <script>
-    export let src;
+    import { userDefaultImages } from "$lib/gameAssets";
+    export let src = userDefaultImages.profile;
     export let width = "60px";
     export let height = "60px";
 </script>
