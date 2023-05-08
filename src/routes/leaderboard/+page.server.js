@@ -21,21 +21,23 @@ export async function load() {
         console.error(error)
     }
 
-    // Sort array in descending order
-    playerList.sort((a, b) => b.totalPoints - a.totalPoints)
+    if (playerList.length > 0) {
+        // Sort array in descending order
+        playerList.sort((a, b) => b.totalPoints - a.totalPoints)
 
-    // Keeps only the top 10 players
-    playerList = playerList.slice(0, 10)
+        // Keeps only the top 10 players
+        playerList = playerList.slice(0, 10)
 
-    // Adds rank for each player
-    // The first player has rank 1
-    playerList[0].rank = 1
-    for (let i = 1; i < playerList.length; i++) {
-        // Check for same total points
-        if (playerList[i].totalPoints == playerList[i - 1].totalPoints)
-            playerList[i].rank = playerList[i - 1].rank
-        else 
-            playerList[i].rank = playerList[i - 1].rank + 1
+        // Adds rank for each player
+        // The first player has rank 1
+        playerList[0].rank = 1
+        for (let i = 1; i < playerList.length; i++) {
+            // Check for same total points
+            if (playerList[i].totalPoints == playerList[i - 1].totalPoints)
+                playerList[i].rank = playerList[i - 1].rank
+            else 
+                playerList[i].rank = playerList[i - 1].rank + 1
+        }
     }
 
     return {

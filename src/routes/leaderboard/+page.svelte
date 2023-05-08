@@ -74,9 +74,9 @@
 <style>
     .page-ctn {
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
-        height: auto;
+        height: 100vh;
     }
 
     .subject-title {
