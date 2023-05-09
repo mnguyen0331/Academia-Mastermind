@@ -1,6 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
 import * as argon2 from 'argon2'
-import { userDefaultImages } from '$lib/gameAssets';
 import { Users } from '$lib/server/db/users'
 import { dateTimeFormatter, validateInput } from '$lib/server/utils';
 
@@ -47,9 +46,9 @@ export const actions = {
         const savedName = name.toString().trim()
         const savedUserName= username.toString().trim()
         const savedPassword = password.toString().trim()
-        const validName = /^[a-zA-Z\s]{4,20}$/;
-        const validUserName = /^[a-zA-Z][a-zA-Z0-9]{5,20}$/;
-        const validPassword = /.{6,20}/;
+        const validName = /^[a-zA-Z\s]{1,20}$/;
+        const validUserName = /^[a-zA-Z][a-zA-Z0-9]{1,20}$/;
+        const validPassword = /.{1,20}/;
 
         if (!validateInput(savedName, validName)) {
             return fail(400, { 
@@ -91,7 +90,7 @@ export const actions = {
             username: savedUserName, 
             password: hashedPassword,
             // Default profile
-            profile: userDefaultImages.profile,
+            profile: '',
             // Default avatar
             avatar: [],
             // Unlocked levels nad Experience points in Mathematics subject
